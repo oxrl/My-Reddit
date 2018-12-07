@@ -1,8 +1,8 @@
 (function() {
-var app = angular.module('starter', ['ionic']);
+var app = angular.module('starter', ['ionic','angularMoment']);
       app.controller('RedditCtrl',function($scope,$http){
         $scope.posts = [];
-        $http.get('https://www.reddit.com/.json')
+        $http.get('https://www.reddit.com/new/.json')
           .success(function(posts){
             angular.forEach(posts.data.children,function(post,key){
               $scope.posts.push(post.data);

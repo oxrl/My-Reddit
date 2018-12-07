@@ -8,6 +8,9 @@
     <link href="lib/ionic/css/ionic.css" rel="stylesheet">
     <link href="css/style.css" rel="stylesheet">
     <script src="lib/ionic/js/ionic.bundle.js"></script>
+    <script src="lib/moment/moment.js"></script>
+    <script src="lib/angular-moment/angular-moment.js"></script>
+    <script src="lib/moment/locale/es.js"></script>﻿
     <script src="cordova.js"></script>
     <!-- your app's js -->
     <script src="js/app.js"></script>
@@ -23,9 +26,15 @@
               <a href="{{post.url}}" target="_blank" class="item item-thumbnail-left" ng-repeat="post in posts">
                 <img ng-src="{{ post.thumbnail }}" ng-if="post.thumbnail.indexOf('http') === 0" />
                 <h2 class="post-title"> {{ post.title }}</h2>
-                <p>{{ post.domain }}</p>
+                <p>
+                  <span am-time-ago="post.created_utc | amFromUnix"></span>
+                  - {{ post.domain }}
+
+                </p>
               </a>
             </div>
+
+
         </ion-content>
     </ion-pane>
   </body>
